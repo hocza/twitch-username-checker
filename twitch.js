@@ -1,10 +1,9 @@
 var request = require('request');
 fs = require('fs');
-var array = fs.readFileSync('dict.txt').toString().split("\n");
-var USERs = array;
+var users = fs.readFileSync('dict.txt').toString().split("\n");
 var host = 'api.twitch.tv/kraken/users/';
-var USERs = USERs.map(function (api) {
-  return 'https://' + host + api;
+var users = users.map(function (user) {
+  return 'https://' + host + user;
 });
 
 function displayResult(message) {
@@ -14,8 +13,8 @@ function displayResult(message) {
   });
 }
 
-function callAPIs ( host, USERs ) {
-  var API = USERs.shift();
+function callAPIs ( host, users ) {
+  var API = users.shift();
   request(API, function(err, res, body) {
     var obj = JSON.parse(body);
     if(obj.error)
@@ -26,10 +25,10 @@ function callAPIs ( host, USERs ) {
     {
       displayResult('User ' + obj.name + ' do exists since: ' + obj.updated_at.replace(/Z/, ' ').replace(/T/, ' ').replace(/\..+/, '') );
     }
-    if( USERs.length ) {
-      callAPIs ( host, USERs );
+    if( users.length ) {
+      callAPIs ( host, users );
     }
   });
 }
 
-callAPIs( host, USERs );
+callAPIs( host, users );
