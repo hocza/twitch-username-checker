@@ -1,0 +1,23 @@
+{
+  "name": "twitch-username-checker",
+  "version": "1.0.0",
+  "description": "check which name is still available for use",
+  "main": "twitch.js",
+  "dependencies": {
+    "request": "^2.55.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hocza/twitch-username-checker"
+  },
+  "author": "Jozsef Hocza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hocza/twitch-username-checker/issues"
+  },
+  "homepage": "https://github.com/hocza/twitch-username-checker"
+}
